@@ -1,10 +1,8 @@
 import { useState } from "react";
 import "./bootstrap.min.css";
 import "./App.css";
-
 import Count from "./components/Count";
-import DecreamentButton from "./components/DecreamentButton";
-import IncreamentButton from "./components/IncreamentButton";
+import Button from "./components/Button";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -21,8 +19,16 @@ function App() {
       <div className="inner-container text-center mb-5">
         <Count count={count}></Count>
         <div className="btnxContainer">
-          <DecreamentButton decreament={decreament}></DecreamentButton>
-          <IncreamentButton increament={increament}></IncreamentButton>
+          <Button
+            action={decreament}
+            text="decreament"
+            color="btn-danger"
+          ></Button>
+          <Button
+            action={increament}
+            text="increament"
+            color="btn-success"
+          ></Button>
         </div>
       </div>
     </main>
