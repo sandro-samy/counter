@@ -1,8 +1,8 @@
-const Button = ({ action, text, color }) => {
+const Button = ({ action, text, className }) => {
   return (
     <button
       onClick={action}
-      className={`btn btn-primary text-capitalize mx-4 ${color}`}
+      className={`btn btn-primary text-capitalize ${className}`}
     >
       {text}
     </button>
