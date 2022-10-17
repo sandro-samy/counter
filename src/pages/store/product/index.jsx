@@ -9,6 +9,8 @@ const Product = ({ increament }) => {
   useEffect(() => {
     axios.get(`https://fakestoreapi.com/products/${id}`).then((res) => {
       setProduct(res.data);
+      console.log(product);
+      console.log(product.rating.rate);
     });
   }, [id]);
 
@@ -29,9 +31,10 @@ const Product = ({ increament }) => {
             </div>
             <div className="specs-container col-lg-4 col-md-12 mb-4 mb-lg-0">
               <h2 className="mb-4">{product.name}</h2>
+              <p>Category : {product.category} </p>
               <p>Description : {product.description}</p>
-              <p>Rating :</p>
-              <p>price : {product.price}</p>
+              <p>Rating : {product?.rating?.rate} / 5</p>
+              <p>price : {product.price} EGP</p>
             </div>
             <div className="action-container col-lg-4 col-md-12">
               <div className="inner-action-container d-flex flex-column justify-content-center rounded-3 shadow-lg border-2-dark w-100 p-4 mb-5 my-lg-0 mx-auto">
@@ -43,7 +46,7 @@ const Product = ({ increament }) => {
                 <div className="w-100 d-flex justify-content-between px-5">
                   <p>Status</p>
                   <p>:</p>
-                  <p>{product.count}</p>
+                  <p>In Stock</p>
                 </div>
                 <button className="btn btn-dark" onClick={increament}>
                   Add to Cart

@@ -28,7 +28,7 @@ const Store = ({ increament }) => {
                 <h5 className="card-title mb-3">{product.title}</h5>
                 <div className="card-text">
                   <p className="mb-2">{product.category}</p>
-                  <p>{product.price}</p>
+                  <p>{product.price} EGP</p>
                 </div>
                 <div className="d-flex flex-column justify-content-between">
                   <Link
