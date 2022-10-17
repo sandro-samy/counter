@@ -35,7 +35,7 @@ const Navbar = ({ count }) => {
             <li className="nav-item">
               <Link
                 className={`nav-link fw-bold text-uppercase  ${
-                  (pathname === "/" || pathname.split("/")[0] === "product") &&
+                  (pathname === "/" || pathname.split("/")[1] === "product") &&
                   "active"
                 }`}
                 aria-current="page"
