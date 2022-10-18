@@ -1,11 +1,13 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-const Navbar = ({ count }) => {
+import { useSelector } from "react-redux";
+const Navbar = () => {
   const { pathname } = useLocation();
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   return (
     <nav
-      className="navbar navbar-expand-lg bg-light w-100 p-0 sticky-top shadow-sm"
+      className="navbar navbar-expand-lg bg-light w-100 p-0 sticky-top shadow-sm mb-4"
       style={{ maxHeight: "60px" }}
       id="navbar"
     >
@@ -28,7 +30,7 @@ const Navbar = ({ count }) => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div
-          className="collapse navbar-collapse ms-auto"
+          className="collapse navbar-collapse ms-auto pt-1"
           id="navbarSupportedContent"
         >
           <ul className="navbar-nav ms-auto mb-lg-0">
@@ -82,9 +84,11 @@ const Navbar = ({ count }) => {
                 to="cart"
               >
                 <AiOutlineShoppingCart className="fs-2" />
-                <span className="position-absolute top-5 start-100 translate-middle badge rounded-pill bg-danger">
-                  {count}
-                </span>
+                {!!totalQuantity && (
+                  <span className="position-absolute top-5 start-100 translate-middle badge rounded-pill bg-danger">
+                    {totalQuantity}
+                  </span>
+                )}
               </Link>
             </li>
           </ul>

@@ -1,8 +1,11 @@
 import axios from "axios";
 import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import { addItem } from "../../../store/cartSlice";
+import { increment } from "../../../store/counterSlice";
 
-const Product = ({ increament }) => {
+const Product = () => {
   const [product, setProduct] = React.useState({});
   let { id } = useParams();
 
@@ -14,6 +17,7 @@ const Product = ({ increament }) => {
     });
   }, [id]);
 
+  const dispatch = useDispatch();
   return (
     <>
       {product && (
@@ -48,7 +52,10 @@ const Product = ({ increament }) => {
                   <p>:</p>
                   <p>In Stock</p>
                 </div>
-                <button className="btn btn-dark" onClick={increament}>
+                <button
+                  className="btn btn-dark"
+                  onClick={() => dispatch(addItem(product))}
+                >
                   Add to Cart
                 </button>
               </div>

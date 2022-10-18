@@ -1,0 +1,12 @@
+.imageContainer {
+  max-width: 600px;
+}
+
+.cell {
+  max-width: 2vw;
+  height: max(70px, 8vw) !important;
+}
+.totalCount {
+  display: flex;
+  justify-content: center;
+}

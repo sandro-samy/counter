@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 import Button from "../../components/Button";
 import Count from "./counter";
+import { decrement, increment } from "../../store/counterSlice";
+import { useDispatch } from "react-redux";
 
-const Counter = ({ count, decreament, increament }) => {
+const Counter = () => {
+  const dispatch = useDispatch();
+
   return (
     <main className="mainContainer container vh-100 d-flex justify-content-center align-items-center">
       <div className="inner-container text-center mb-5">
-        <Count count={count}></Count>
+        <Count></Count>
         <div className="btnxContainer">
           <Button
-            action={decreament}
+            action={() => dispatch(decrement())}
             text="decreament"
             className="btn-danger mx-4"
           ></Button>
           <Button
-            action={increament}
+            action={() => dispatch(increment())}
             text="increament"
             className="btn-success mx-4"
           ></Button>
