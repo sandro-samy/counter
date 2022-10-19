@@ -28,7 +28,13 @@ const Store = () => {
             <div className="col-lg-4 col-md-6 col-sm-12 " key={product.id}>
               <div className="card rounded-4 shadow-sm p-3">
                 <div className={styles.cardCaption}>
-                  <img src={product.image} className="card-img-top" alt="..." />
+                  <div style={{ height: "40vh"  }} className="d-flex justify-content-center">
+                    <img
+                      src={product.image}
+                      className="card-img-top h-100"
+                      alt="..."
+                    />
+                  </div>
                   <div className="card-body">
                     <h5 className="card-title mb-3">
                       {truncate(product.title, 20)}

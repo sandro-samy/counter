@@ -16,13 +16,13 @@ const Navbar = () => {
   };
   return (
     <nav
-      className="navbar navbar-expand-lg bg-light w-100 p-0 sticky-top shadow-sm mb-4"
-      style={{ maxHeight: "60px" }}
+      className="navbar navbar-expand-lg  bg-light w-100 p-0 sticky-top shadow-sm mb-4 py-2 py-lg-0"
+      // style={{ maxHeight: "60px" }}
       id="navbar"
     >
       <div className="container ">
         <Link
-          className="navbar-brand form-control-lg d-flex justify-content-center align-items-center  fw-bolder fs-3 "
+          className="navbar-brand  d-flex justify-content-center align-items-center  fw-bolder fs-3 "
           to="/"
         >
           Store
