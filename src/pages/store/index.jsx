@@ -1,23 +1,25 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Button from "../../components/Button";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../store/cartSlice";
 import { truncate } from "javascript-functions";
 import styles from "./store.module.css";
+import { getProducts } from "../../store/productsSlice";
 const Store = () => {
-  const [products, setProducts] = React.useState([]);
-
-  React.useEffect(() => {
-    axios("https://fakestoreapi.com/products").then((res) => {
-      setProducts(res.data);
-      console.log(res.data);
-    });
-  }, []);
+  const products = useSelector((state) => state.products.products);
+  console.log(products);
 
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getProducts());
+  }, []);
+
+  const login = useSelector((state) => state.login.user);
+  console.log(login);
+
   return (
     <div className="container p-5">
       <div className="row gy-5">
@@ -45,6 +47,7 @@ const Store = () => {
                     more details
                   </Link>
                   <Button
+                    disabled={!login}
                     action={() => dispatch(addItem(product))}
                     text={<AiOutlineShoppingCart className="fs-3" />}
                     className="btn-success w-100 mx-0"

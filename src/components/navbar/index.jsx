@@ -1,10 +1,19 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../store/loginSlice";
+import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const { pathname } = useLocation();
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+  const login = useSelector((state) => state.login.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const logoutHandler = () => {
+    dispatch(logout());
+    navigate("/signup");
+  };
   return (
     <nav
       className="navbar navbar-expand-lg bg-light w-100 p-0 sticky-top shadow-sm mb-4"
@@ -76,6 +85,27 @@ const Navbar = () => {
                 counter
               </Link>
             </li>
+            {!login ? (
+              <li className="nav-item">
+                <Link
+                  className={`nav-link fw-bold text-uppercase  ${
+                    pathname === "/signup" && "active"
+                  }`}
+                  to="/signup"
+                >
+                  Sign Up
+                </Link>
+              </li>
+            ) : (
+              <li className="nav-item">
+                <button
+                  className={`nav-link fw-bold text-uppercase border-0 bg-transparent `}
+                  onClick={logoutHandler}
+                >
+                  logout
+                </button>
+              </li>
+            )}
             <li className="nav-item">
               <Link
                 className={`nav-link fw-bold text-uppercase d-flex align-items-center position-relative  ${
